@@ -22,7 +22,7 @@ export default function SignUpButton(props:{text:string, func?:Function}){
     return(
         <div>
         <div className="p-1 border-2 border-white md:flex flex-row h-16  hidden">
-         <button onClick={()=>{if(success){setSuccess(false)}else{setActive(!active)}; }} className={`hover:bg-transparent transition-all duration-500 w-56 pt-3 pb-2 md:text-[20px] text-[16px]  ${success? ' text-green-400 ' : 'text-black'}  ${active ? 'bg-transparent' : 'bg-white'} font-semibold`}>{`${active ? 'No spam, ever :p' : success? 'Success ^w^' : 'Sign up for updates!'}`}</button>
+         <button onClick={()=>{if(success){setSuccess(false)}else{setActive(!active)}; }} className={`hover:bg-transparent transition-all duration-500 w-56 pt-3 pb-2 md:text-[20px] text-[16px]  ${success? ' text-green-400 ' : active ? 'text-white' : 'text-black'}  ${active ? 'bg-transparent' : 'bg-white'} font-semibold`}>{`${active ? 'No spam, ever :p' : success? 'Success ^w^' : 'Sign up for updates!'}`}</button>
          <div className={` transition-all overflow-hidden duration-500 ${active ? 'w-0.5' : 'w-0'} h-full bg-white`}></div>
             <form id='form' action={async()=>{await 
             SendEmail(email);
