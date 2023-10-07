@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, IBM_Plex_Mono } from 'next/font/google'
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] , variable:"--font-inter"})
 
@@ -12,14 +13,14 @@ const plexMono = IBM_Plex_Mono({
 
 
 export const metadata: Metadata = {
-  title: "Lia Paisley",
-  description: "The official website of Emelia Paisley",
+  title: "YOASOBI",
+  description: "",
   openGraph: {
-    title: "Lia Paisley",
-    description: "The official website of Emelia Paisley",
-    url: "https://emelia.pl",
-    images: "https://emelia.pl/favicon.ico",
-    siteName: "Lia Paisley",
+    title: "YOASOBI",
+    description: "The official unoffical YOASOBI fansite",
+    url: "https://yoaso.bi",
+    images: "https://yoaso.bi/favicon.ico",
+    siteName: "YOASO.BI",
     locale: "en-US",
     type: "website",
   },
@@ -44,7 +45,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans text-neutral-800  ${plexMono.variable} font-ibm`}>{children}</body>
+      <body className={`${inter.variable} font-sans text-neutral-800  ${plexMono.variable} font-ibm`}>{children}
+      <p className='text-white z-50 text-opacity-30 text-[12px] absolute bottom-2 left-2'>Matthew Guo @ <Link className='hover:underline' href='https://homescree.net'>Homescree.net</Link></p></body>
     </html>
   )
 }

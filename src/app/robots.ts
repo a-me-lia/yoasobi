@@ -5,7 +5,7 @@ export default function robots() {
         userAgent: "*",
       },
     ],
-    sitemap: "https://hemelia.pl/sitemap.xml",
-    host: "https://emelia.pl",
+    sitemap: "https://yoaso.bi/sitemap.xml",
+    host: "https://yoaso.bi",
   };
 }
