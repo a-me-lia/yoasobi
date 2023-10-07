@@ -10,17 +10,17 @@ export async function SendEmail(
 ) {
   try {
     const data = await resend.emails.send({
-      from: "lia@emelia.pl",
+      from: "lia@yoaso.bi",
       to: email,
-      subject: "Your message has been sent!",
-      html: `Your email: ${email} will now receive site updates tro Emelia.pl :w:`
+      subject: "You email has been recieved!",
+      html: `Your email: ${email} will now receive site updates to yoaso.bi, as well as upcoming YOASOBI events and drops! :w:`
     });
     resend.emails.send({
-      from: "postmaster@emelia.pl",
+      from: "postmaster@yoaso.bi",
       to: "matthewguo.x86@gmail.com",
-      subject: `New subscriber to emelia.pl`,
+      subject: `New subscriber to yoaso.bi`,
       html: `
-      New subscriber to emelia.pl: ${email}`
+      New subscriber to yoaso.bi: ${email}`
     });
     return data;
   } catch (error) {

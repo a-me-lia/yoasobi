@@ -15,6 +15,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "YOASOBI",
   description: "",
+  keywords: ['YOASOBI', 'jpop', 'fan site', 'yoasobi', 'into the night', 'yoaso.bi'],
   openGraph: {
     title: "YOASOBI",
     description: "The official unoffical YOASOBI fansite",
