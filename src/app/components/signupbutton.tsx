@@ -1,8 +1,55 @@
 "use client"
+
+import { useEffect, useState } from "react"
+
+import { SendEmail } from "../api/email"
+
 export default function SignUpButton(props:{text:string, func?:Function}){
+    const[active, setActive] = useState(false)
+    const[submit, setSubmit] = useState(false)
+    const[success, setSuccess] = useState(false)
+    const[email, setEmail] = useState('')
+
+
+    useEffect(() => {
+        const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+        function validateEmail(email: string) {
+          return emailRegex.test(email);
+        }
+         setSubmit(validateEmail(email));
+      }, [email]);
+
     return(
-        <div className="p-1 border-2 border-white">
-         <button onClick={()=>{props.func}} className="hover:bg-transparent transition-all duration-200 px-6 pt-3 pb-2 md:text-[20px] text-[16px]  bg-white text-black font-semibold">{props.text}</button>
+        <div>
+        <div className="p-1 border-2 border-white md:flex flex-row h-16  hidden">
+         <button onClick={()=>{if(success){setSuccess(false)}else{setActive(!active)}; }} className={`hover:bg-transparent transition-all duration-500 w-56 pt-3 pb-2 md:text-[20px] text-[16px]  ${success? ' text-green-400 ' : 'text-black'}  ${active ? 'bg-transparent' : 'bg-white'} font-semibold`}>{`${active ? 'No spam, ever :p' : success? 'Success ^w^' : 'Sign up for updates!'}`}</button>
+         <div className={` transition-all overflow-hidden duration-500 ${active ? 'w-0.5' : 'w-0'} h-full bg-white`}></div>
+            <form id='form' action={async()=>{await 
+            SendEmail(email);
+            (document.getElementById("form") as HTMLFormElement).reset();
+            setEmail('')
+            setActive(false)
+            setSuccess(true)}} className={` md:text-[20px] text-[16px] transition-all overflow-hidden max-h-full duration-700 ${active ? 'w-80' : 'w-0'} pt-1`}>
+                <label htmlFor=""><input placeholder={`${success ? 'success!': 'lia@emelia.pl'}`} onChange={(e)=>{setEmail(e.target.value)}} className={`h-full  pl-6 bg-transparent  focus:outline-none`} type="email"/></label>
+                <button disabled={!submit} className="h-6 w-6   p-0.5 border-2 border-white"  type="submit"><div className={`w-full transition-opacity duration-300 h-full bg-white ${submit? 'opacity-100 hover:opacity-70' : 'opacity-0'}`}></div></button>
+
+            </form>
         </div>
+        <div className="p-1 border-2 border-white md:hidden flex-col h-max  block">
+         <button onClick={()=>{if(success){setSuccess(false)}else{setActive(!active)}; }} className={`hover:bg-transparent transition-all duration-500 w-64 pt-3 pb-2 md:text-[20px] text-[16px]  ${success? ' text-green-400 ' : 'text-black'}  ${active ? 'bg-transparent' : 'bg-white'} font-semibold`}>{`${active ? 'No spam, ever :p' : success? 'Success ^w^' : 'Sign up for updates!'}`}</button>
+
+            <form id='form' action={async()=>{await 
+            SendEmail(email);
+            (document.getElementById("form") as HTMLFormElement).reset();
+            setEmail('')
+            setActive(false)
+            setSuccess(true)}} className={` flex flex-row justify-between md:text-[20px] text-[16px] transition-all overflow-hidden w-64 duration-700 ${active ? 'mt-2 h-8' : 'h-0'} `}>
+                <label htmlFor=""><input placeholder={`${success ? 'success!': 'lia@emelia.pl'}`} onChange={(e)=>{setEmail(e.target.value)}} className={`w-full pr-1  pl-2  bg-transparent  focus:outline-none`} type="email"/></label>
+                <button disabled={!submit} className="h-6 w-6 mr-2  p-0.5 border-2 border-white"  type="submit"><div className={`w-full transition-opacity duration-300 h-full bg-white ${submit? 'opacity-100' : 'opacity-0'}`}></div></button>
+
+            </form>
+        </div>
+        </div>
+
     )
 }
