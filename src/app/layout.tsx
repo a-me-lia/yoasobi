@@ -46,7 +46,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans text-neutral-800  ${plexMono.variable} font-ibm`}>{children}
+      <body className={`${inter.variable} font-sans text-neutral-800  ${plexMono.variable} font-ibm`}>{children}</body>
     </html>
   )
 }
