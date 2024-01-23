@@ -47,7 +47,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans text-neutral-800  ${plexMono.variable} font-ibm`}>{children}
-      <p className='text-white z-50 text-opacity-30 text-[12px] absolute bottom-2 left-2'>Matthew Guo @ <Link className='hover:underline' href='https://homescree.net'>Homescree.net</Link></p></body>
     </html>
   )
 }
