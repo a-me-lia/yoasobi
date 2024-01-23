@@ -10,7 +10,7 @@ export async function SendEmail(
 ) {
   try {
     const data = await resend.emails.send({
-      from: "lia@yoaso.bi",
+      from: "sara@yoaso.bi",
       to: email,
       subject: "You email has been recieved!",
       html: `Your email: ${email} will now receive site updates to yoaso.bi, as well as upcoming YOASOBI events and drops! :w:`
